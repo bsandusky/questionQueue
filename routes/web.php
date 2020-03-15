@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* Question Controller Routes */
+Route::get('/questions', 'QuestionController@index')->name('questions.index');
+Route::post('/questions', 'QuestionController@store')->name('question.store');
+Route::get('questions/{question}', 'QuestionController@show')->name('question.show');
+
+/* Answer Controller Routes */
+Route::post("/questions/{question}/answers", 'AnswerController@store')->name('answer.store');
+
