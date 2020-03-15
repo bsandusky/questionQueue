@@ -22,6 +22,6 @@ Route::get('/questions', 'QuestionController@index')->name('questions.index');
 Route::post('/questions', 'QuestionController@store')->name('questions.store');
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 
-/* Answer Controller Routes */
-Route::post("/questions/{question}/answers", 'AnswerController@store')->name('answer.store');
+/* Answer Controller Resources */
+Route::resource('questions.answers', 'AnswerController');
 

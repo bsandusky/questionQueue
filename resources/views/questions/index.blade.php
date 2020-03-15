@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="row pt-3">
-                        <button class="btn btn-primary">Add new post</button>
+                        <button class="btn btn-primary">Ask a question</button>
                     </div>
 
                 </div>
