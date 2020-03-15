@@ -46,7 +46,9 @@
             <div class="col-4">
                 <ul>
                     @foreach($questions as $question)
-                    <li>{{ $question->text }}</li>
+                    <li>
+                        <a href="/questions/{{ $question->id}}">{{ $question->text }}</a>
+                    </li>
                     @endforeach
                 </ul>
                 {{ $questions->links() }}
