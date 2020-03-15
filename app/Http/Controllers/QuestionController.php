@@ -11,12 +11,12 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        /* Use Guzzle client to call open API with random question 
-        from Animal category to use as field placeholder text */
+        /* Use Guzzle client to call Open Trivia DB API 
+        for random question to use as field placeholder text */
         $client = new GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://opentdb.com/api.php?amount=1&category=27&type=multiple');
+        $res = $client->request('GET', 'https://opentdb.com/api.php?amount=1&type=multiple');
         $data = json_decode($res->getBody(), true);
-        $placeholder = html_entity_decode($data['results'][0]['question']);
+        $placeholder = htmlspecialchars_decode($data['results'][0]['question'],  ENT_QUOTES);
 
         /* Retrive data from database, with paginated records from newest to oldest */
         $questions = Question::orderBy('created_at', 'DESC')->simplePaginate(10);
