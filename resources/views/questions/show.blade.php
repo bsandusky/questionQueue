@@ -14,7 +14,7 @@
     <body>
         <div class="container">
             <h1>{{ config('app.name', 'Laravel') }}</h1>
-            Question show
+                {{ $question->text }}
         </div>
     </body>
 </html>
