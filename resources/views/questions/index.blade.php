@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     <div class="form-group row">
-                        <input id="text" name="text" type="text" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" autocomplete="text" autofocus required>
+                        <input id="text" name="text" type="text" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" autocomplete="text" autofocus required placeholder="{{$placeholder}}">
 
                         @error('text')
                         <span class="invalid-feedback" role="alert">
