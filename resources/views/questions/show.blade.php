@@ -1,54 +1,47 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <!-- Title -->
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@section('content')
 
-         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    
-    <body>
-        <div class="container">
-            <h1>{{ config('app.name', 'Laravel') }}</h1>
-            <h2>{{ $question->text }}</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 mt-5">
+            <h1>{{ $question->text }}</h1>
+        </div>
+    </div>
 
-            <form action="/questions/{{$question->id}}/answers" method="post">
-                @csrf
-
-                <div class="row">
-                    <div class="col-8 offset-2">
-                        <div class="form-group row">
-                            <input id="text" name="text" type="text" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" autocomplete="text" autofocus required placeholder="Answer me!">
-
-                            @error('text')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row pt-3">
-                    <button class="btn btn-primary">Answer question</button>
-                </div>
-            </form>
-
+    <form action="/questions/{{$question->id}}/answers" method="post">
+        @csrf
         <div class="row">
-            <div class="col-4">
-                <ul>
+            <div class="col-8 offset-2 mt-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input name="text" type="text" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" autocomplete="text" autofocus required placeholder="Answer me!">
+                        <span class="input-group-btn ml-2">
+                            <button type="submit" class="btn btn-secondary">Answer question</button>
+                        </span>
+                    </div>
+                    @error('text')
+                    <strong>{{ $message }}</strong>
+                    @enderror
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            @if($question->answers->count() == 0)
+                <p>There are no responses to this question yet. Be the first to respond.</p>
+            @else
+                <ul class="list-group mt-3">
                     @foreach($question->answers as $answer)
-                    <li>
+                    <li class="list-group-item">
                         {{ $answer->text }}</a>
                     </li>
                     @endforeach
                 </ul>
-            </div>
+            @endif
         </div>
-        </div>
-    </body>
-</html>
+    </div>
+
+    @endsection

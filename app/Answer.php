@@ -12,7 +12,7 @@ class Answer extends Model
     ];
 
     /* Define belongsTo relationship to Question model */
-    public function answers() {
+    public function question() {
         return $this->belongsTo(Question::class);
     }
 }

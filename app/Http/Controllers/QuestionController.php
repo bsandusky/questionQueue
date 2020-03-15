@@ -18,8 +18,7 @@ class QuestionController extends Controller
         $data = json_decode($res->getBody(), true);
         $placeholder = html_entity_decode($data['results'][0]['question']);
 
-        /* Get sorted questions from the database */
-        $questions = DB::table('questions')->orderBy('created_at', 'DESC')->simplePaginate(10);
+        $questions = Question::orderBy('created_at', 'DESC')->simplePaginate(10);
 
         /* Return view with injected data */
         return view('questions.index', ['questions' => $questions, 'placeholder' => $placeholder]);
