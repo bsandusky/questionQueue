@@ -9,12 +9,12 @@ class QuestionController extends Controller
 {
     public function index() 
     {
-        dd('implement this');
+        return view('questions.index');
     }
 
     public function show(Question $question) 
     {
-        dd('implement this');
+        return view('question.show', compact('question'));
     }
 
     public function store()
