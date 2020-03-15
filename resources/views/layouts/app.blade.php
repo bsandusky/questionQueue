@@ -18,6 +18,7 @@
 <body>
 
     <div id="app">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
@@ -27,6 +28,7 @@
         </nav>
     </div>
 
+    <!-- Yield to main content -->
     <main>
         @yield('content')
     </main>

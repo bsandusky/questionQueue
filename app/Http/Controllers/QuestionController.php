@@ -18,6 +18,7 @@ class QuestionController extends Controller
         $data = json_decode($res->getBody(), true);
         $placeholder = html_entity_decode($data['results'][0]['question']);
 
+        /* Retrive data from database, with paginated records from newest to oldest */
         $questions = Question::orderBy('created_at', 'DESC')->simplePaginate(10);
 
         /* Return view with injected data */
@@ -31,6 +32,7 @@ class QuestionController extends Controller
 
     public function store(Request $request)
     {
+        /* Validate user input: required, minimum length 5, ends with '?' */
         $data = $request->validate([
             'text' => ['required', 'min:5', 'ends_with:?'],
         ]);

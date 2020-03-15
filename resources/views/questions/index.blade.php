@@ -3,9 +3,10 @@
 @section('content')
 
 <div class="container">
+
+    <!-- New question input form -->
     <form action="/questions" method="post">
         @csrf
-
         <div class="row">
             <div class="col-8 offset-2 mt-5">
                 <div class="form-group">
@@ -23,6 +24,7 @@
         </div>
     </form>
 
+    <!-- Display existing questions and number of answers -->
     <div class="row">
         <div class="col-8 offset-2">
             @if($questions->count() == 0)

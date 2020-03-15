@@ -17,11 +17,11 @@ Route::get('/', function () {
     return redirect('/questions');
 });
 
-/* Question Controller Routes */
+/* Question Controller routes */
 Route::get('/questions', 'QuestionController@index')->name('questions.index');
 Route::post('/questions', 'QuestionController@store')->name('questions.store');
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 
-/* Answer Controller Resources */
+/* Answer Controller resources nested under Question */
 Route::resource('questions.answers', 'AnswerController');
 

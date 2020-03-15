@@ -10,6 +10,7 @@ class AnswerController extends Controller
 {
     public function store(Request $request, $question_id)
     {
+        /* Validate user input: required, minimum length 5 */
         $data = $request->validate([
             'text' => ['required', 'min:5'],
         ]);

@@ -3,12 +3,15 @@
 @section('content')
 
 <div class="container">
+
+    <!-- Display question text -->
     <div class="row">
         <div class="col-8 offset-2 mt-5">
             <h1>{{ $question->text }}</h1>
         </div>
     </div>
 
+    <!-- New answer input form -->
     <form action="/questions/{{$question->id}}/answers" method="post">
         @csrf
         <div class="row">
@@ -28,6 +31,7 @@
         </div>
     </form>
 
+    <!-- Display existing answers -->
     <div class="row">
         <div class="col-8 offset-2">
             @if($question->answers->count() == 0)
