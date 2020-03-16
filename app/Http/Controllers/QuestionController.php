@@ -41,6 +41,7 @@ class QuestionController extends Controller
         $question->text = $request->text;
         $question->save();
 
-        return redirect('/questions');
+        /** Refactor to use route helper */
+        return redirect(route('questions.index'));
     }
 }

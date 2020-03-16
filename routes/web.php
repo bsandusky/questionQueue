@@ -23,5 +23,6 @@ Route::post('/questions', 'QuestionController@store')->name('questions.store');
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 
 /* Answer Controller resources nested under Question */
-Route::resource('questions.answers', 'AnswerController');
+/** Refactor to include 'only' to avoid dead routes */
+Route::resource('questions.answers', 'AnswerController', ['names' => ['store' => 'answers.store'] ])->only(['store']);
 

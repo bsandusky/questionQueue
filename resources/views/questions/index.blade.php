@@ -5,7 +5,7 @@
 <div class="container">
 
     <!-- New question input form -->
-    <form action="/questions" method="post">
+    <form action="{{ route('questions.store') }}" method="post">
         @csrf
         <div class="row">
             <div class="col-8 offset-2 mt-5">
@@ -32,7 +32,7 @@
             @else
                 <div class="list-group pt-3">
                     @foreach($questions as $question)
-                    <a href="/questions/{{ $question->id }}" class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ route('questions.show', ['question' => $question]) }}" class="list-group-item d-flex justify-content-between align-items-center">
                         {{ $question->text }}
                         <span class="badge badge-secondary badge-pill">{{ $question->answers->count() }} answers </span>
                     </a>

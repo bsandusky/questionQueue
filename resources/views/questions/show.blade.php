@@ -12,7 +12,7 @@
     </div>
 
     <!-- New answer input form -->
-    <form action="/questions/{{$question->id}}/answers" method="post">
+    <form action="{{ route('answers.store', ['question' => $question]) }}" method="post">
         @csrf
         <div class="row">
             <div class="col-8 offset-2 mt-3">
