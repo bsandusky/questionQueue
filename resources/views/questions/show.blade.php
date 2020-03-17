@@ -13,7 +13,7 @@
 
     <!-- New answer input form -->
     <form action="{{ route('questions.answers.store', ['question' => $question]) }}" method="post">
-        @csrf
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-8 offset-2 mt-3">
                 <div class="form-group">
